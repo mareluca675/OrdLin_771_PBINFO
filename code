@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int mat[1001][1001], suma[1001], vec[1001], m, n, i, j, k;
+
+int main()
+{
+    cin >> n >> m;
+    
+    for(i = 1; i <= n; i ++)
+    {
+        vec[i] = i;
+        
+        for(j = 1; j <= m; j ++)
+        {
+            cin >> mat[i][j];
+            
+            suma[i] += mat[i][j];
+        }
+    }
+    
+    for(i = 1; i <= n; i ++)
+    {
+        for(j = i + 1; j <= n; j ++)
+        {
+            if(suma[i] > suma[j])
+            {
+                swap(suma[i], suma[j]);
+                swap(vec[i], vec[j]);
+            }
+        }
+    }
+    
+    for(i = 1; i <= n; i ++)
+    {
+        for(j = 1; j <= m; j ++)
+        {
+            cout << mat[vec[i]][j] << ' ';
+        }
+        
+        cout << '\n';
+    }
+    
+    return 0;
+}
